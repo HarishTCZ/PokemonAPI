@@ -1,11 +1,9 @@
 package com.pokemon.Pokemon.Controller;
 
 import com.pokemon.Pokemon.Model.Pokemon;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +23,15 @@ public class PokemonController {
     }
 
     @GetMapping("/pokemon/{id}")
+    //read the data from the client
     public Pokemon getId(@PathVariable int id){
         //pathvariable is used to get the input data from the url path
         return new Pokemon(id,"name","type");
+    }
+
+    @PostMapping("/pokemon/create")
+    //create a new data in the client
+    public ResponseEntity<Pokemon> createPokemon(@RequestBody Pokemon pokemon){
+        return new ResponseEntity<>(pokemon, HttpStatus.CREATED);
     }
 }
