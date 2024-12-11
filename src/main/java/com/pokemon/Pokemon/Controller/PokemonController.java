@@ -37,6 +37,7 @@ public class PokemonController {
     }
 
     @PutMapping("/pokemon/{id}/update")
+    //put the data into the body
     public ResponseEntity<Pokemon> updatePokemon(@RequestBody Pokemon pokemon, @PathVariable("id") int id){
         return ResponseEntity.ok(pokemon);
     }
